@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+    <title>Forgot password</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <img class="logo" src="{% static 'img/logo.png' %}" alt="Logo">
+    <main>
+        <div id="test">
+            <h1>Forgot password</h1>
+            <form method="post" id="forgot-password">
+                {% csrf_token %}
+                <input type="email" id="email" name="email" placeholder="Email" required><br><br>
+                <input type="submit" value="Reset"><br><br>
+                <p>Remembered your password? <a href="/login/">Log in</a></p>
+            </form>
+        </div>
+    </main>
+    <script src="{% static 'js/auth.js' %}"></script>
+</body>
+</html>

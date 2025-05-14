@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+    <title>Teacher Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/styleteacher.css' %}">
+</head>
+
+<body>
+    {% include 'teacher_bar.html' %} <!-- Embed teacher_bar.html -->
+    <div class="page-container">
+    <main>
+        <div>
+            <h1>Welcome, Teacher</h1>
+            
+            <div class="task-summary">
+                <div class="summary-card">
+                    <h3>Pending Tasks</h3>
+                    <p><span id="assigned-count">0</span></p>
+                </div>
+                <div class="summary-card">
+                    <h3>Completed</h3>
+                    <p><span id="completed-count">0</span></p>
+                </div>
+            </div>
+
+            <div class="goto">
+                <input class="button" type="button" value="Pending Tasks" onclick="window.location='{% url 'assigned_tasks' %}'"><br>
+                <input class="button" type="button" value="Completed Tasks" onclick="window.location='{% url 'completed_tasks' %}'"><br>
+            </div>
+        </div>
+    </main>
+    </div>
+    <script src="{% static 'js/teacherj.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bar.css' %}">
+</head>
+<body>
+    <div class="page-container">
+        <main>
+            <div>
+                <h1>Profile</h1>  
+                <img src="{% static 'img/profile.png' %}" alt="Profile Picture">
+                <h2>Your Details</h2>
+                <p><strong>Username:</strong> <span id="username"></span></p>
+                <p><strong>Email:</strong> <span id="email"></span></p>
+                <p><strong>Role:</strong> Admin</p>
+                <input class="beg" type="button" value="Home" onclick="window.location = '{% url 'admin_dashboard' %}'">
+                <input class="beg" type="button" id="logout" value="Log out" style="background-color: brown;">
+            </div>
+        </main>
+    </div>
+    <script src="{% static 'js/auth.js' %}"></script>
+    <script src="{% static 'js/ad.js' %}"></script>
+</body>
+</html>

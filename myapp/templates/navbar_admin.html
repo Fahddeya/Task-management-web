@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>navbar_admin</title>
+    <link rel="stylesheet" href="{% static 'css/bar.css' %}" />
+</head>
+
+<body>
+  <nav>
+    <div class="logo">
+      <img src="{% static 'img/logo.png' %}" alt="logo" />
+    </div>
+  
+    <div class="nav-side">
+      <div class="btns">
+        <a href="{% url 'admin_dashboard' %}" class="home">Home</a>
+      </div>
+  
+      <ul class="nav-links">
+          <li><a href="{% url 'created_tasks' %}">Created Tasks</a></li>
+          <li><a href="{% url 'add_task' %}">Add Task</a></li>
+          <li><a href="{% url 'profileAdmin' %}">Profile</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+</body>
+</html>

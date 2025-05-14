@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Task</title>
+    <link rel="stylesheet" href="{% static 'css/styleteacher.css' %}">
+</head>
+<body>
+    {% include 'navbar_admin.html' %}
+    <div class="page-container">
+        <main>
+            <div>
+                <h1>Edit Task</h1>
+                {% if error %}
+                    <p style="color: red;">{{ error }}</p>
+                {% endif %}
+                <form id="editTaskForm">
+                    <input type="text" id="taskId" value="{{ task.id }}" readonly><br><br>
+                    <label for="createdBy">Created By:</label>
+                    <input type="text" id="createdBy" readonly><br><br>
+
+                    <label for="taskTitle">Task Title:</label>
+                    <input type="text" id="taskTitle" value="{{ task.title }}" required><br><br>
+
+                    <label for="teacherName">Teacher Name:</label>
+                    <input type="text" id="teacherName" value="{{ task.assignee__username }}" required><br><br>
+
+                    <label for="priority">Priority:</label>
+                    <select id="priority" required>
+                        <option value="High" {% if task.priority == 'High' %}selected{% endif %}>High</option>
+                        <option value="Medium" {% if task.priority == 'Medium' %}selected{% endif %}>Medium</option>
+                        <option value="Low" {% if task.priority == 'Low' %}selected{% endif %}>Low</option>
+                    </select><br><br>
+
+                    <label for="dueDate">Due Date:</label>
+                    <input type="date" id="dueDate" value="{{ task.due_date|date:'Y-m-d' }}" required><br><br>
+
+                    <label for="description">Description:<textarea id="description" rows="4">{{ task.description }}</textarea></label>
+                    <br><br>
+
+                    <div style="text-align: center; margin-top: 20px;">
+                        <button type="submit" class="button">Edit</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+    <script src="{% static 'js/ad.js' %}"></script>
+</body>
+</html>

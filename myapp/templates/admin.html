@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/styleteacher.css' %}">
+</head>
+
+<body>
+    {% include 'navbar_admin.html' %}
+    <div class="page-container">
+    <main>
+        <div>
+            <h1>Welcome, Admin</h1>
+            <div id="test"></div>
+            <div class="task-summary">  
+                <div class="summary-card">
+                    <h3>Created tasks</h3>
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="goto">
+                <input class="button" type="button" value="Created tasks" onclick="window.location='{% url 'created_tasks' %}'"><br>
+                <input class="button" type="button" value="Add new task" onclick="window.location='{% url 'add_task' %}'"><br>
+            </div>
+        </div>
+    </main>
+    </div>
+
+    <script src="{% static 'js/ad.js' %}"></script>
+</body>
+</html>

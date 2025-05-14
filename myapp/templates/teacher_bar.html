@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/bar.css' %}" />
+</head>
+
+<body>
+  <nav>
+    <div class="logo">
+      <img src="{% static 'img/logo.png' %}" alt="logo" />
+    </div>
+  
+    <div class="nav-side">
+      <div class="btns">
+        <a href="{% url 'teacher_dashboard' %}" class="home">Home</a>
+      </div>
+  
+      <ul class="nav-links">
+        <li><a href="{% url 'assigned_tasks' %}">Assigned Tasks</a></li>
+        <li><a href="{% url 'completed_tasks' %}">Completed Tasks</a></li>
+        <li><a href="{% url 'profileTeacher' %}">Profile</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+</body>
+</html>

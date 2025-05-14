@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+    <title>School Task Assignment</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <main>
+        <div>
+            <img src="{% static 'img/logo.png' %}" alt="Logo" hspace="0" vspace="0" width="150">
+            <h1>Welcome</h1>
+            <input class="beg" type="button" value="Sign up" onclick="window.location='/signup/'">
+            <input class="beg" type="button" value="Log in" onclick="window.location='/login/'">
+        </div>
+    </main>
+    <script src="{% static 'js/auth.js' %}"></script>
+</body>
+</html>
