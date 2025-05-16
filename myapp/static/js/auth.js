@@ -26,7 +26,7 @@ if (document.getElementById('login')) {
             messageDiv.style.cssText = 'padding: 10px; margin-bottom: 10px; border-radius: 4px; font-size: 14px; text-align: center; font-family: Arial, sans-serif; background-color: #ffebee; color: #d32f2f; border: 1px solid #d32f2f;';
             messageDiv.textContent = 'Please select a role (Admin or Teacher).';
             document.getElementById('login').prepend(messageDiv);
-            setTimeout(() => messageDiv.remove(), 5000);
+            setTimeout(() => messageDiv.remove(), 3000);
             return;
         }
         const formData = new FormData();
@@ -46,7 +46,7 @@ if (document.getElementById('login')) {
                 : 'padding: 10px; margin-bottom: 10px; border-radius: 4px; font-size: 14px; text-align: center; font-family: Arial, sans-serif; background-color: #ffebee; color: #d32f2f; border: 1px solid #d32f2f;';
             messageDiv.textContent = data.message;
             document.getElementById('login').prepend(messageDiv);
-            setTimeout(() => messageDiv.remove(), 5000);
+            setTimeout(() => messageDiv.remove(), 3000);
             if (data.status === 'success') {
                 sessionStorage.setItem('activeUser', JSON.stringify({
                     username: username,
@@ -77,7 +77,7 @@ if (document.getElementById('signup')) {
             messageDiv.style.cssText = 'padding: 10px; margin-bottom: 10px; border-radius: 4px; font-size: 14px; text-align: center; font-family: Arial, sans-serif; background-color: #ffebee; color: #d32f2f; border: 1px solid #d32f2f;';
             messageDiv.textContent = 'Unmatched passwords';
             document.getElementById('signup').prepend(messageDiv);
-            setTimeout(() => messageDiv.remove(), 5000);
+            setTimeout(() => messageDiv.remove(), 3000);
             return;
         }
         
@@ -86,7 +86,7 @@ if (document.getElementById('signup')) {
             messageDiv.style.cssText = 'padding: 10px; margin-bottom: 10px; border-radius: 4px; font-size: 14px; text-align: center; font-family: Arial, sans-serif; background-color: #ffebee; color: #d32f2f; border: 1px solid #d32f2f;';
             messageDiv.textContent = 'Please select a role (Admin or Teacher).';
             document.getElementById('signup').prepend(messageDiv);
-            setTimeout(() => messageDiv.remove(), 5000);
+            setTimeout(() => messageDiv.remove(), 3000);
             return;
         }
         const formData = new FormData();
@@ -107,7 +107,7 @@ if (document.getElementById('signup')) {
                 : 'padding: 10px; margin-bottom: 10px; border-radius: 4px; font-size: 14px; text-align: center; font-family: Arial, sans-serif; background-color: #ffebee; color: #d32f2f; border: 1px solid #d32f2f;';
             messageDiv.textContent = data.message;
             document.getElementById('signup').prepend(messageDiv);
-            setTimeout(() => messageDiv.remove(), 5000);
+            setTimeout(() => messageDiv.remove(), 3000);
             if (data.status === 'success') {
                 setTimeout(() => window.location.href = '/login/', 2000);
             }
@@ -140,3 +140,30 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     }
 });
+
+if (document.getElementById('forgot-password')) {
+    document.getElementById('forgot-password').onsubmit = function(event) {
+        event.preventDefault();
+        const email = document.getElementById('email').value;
+        const formData = new FormData();
+        formData.append('email', email);
+        fetch('/forgot-psw/', {
+            method: 'POST',
+            body: formData,
+            headers: {'X-CSRFToken': getCsrfToken()}
+        })
+        .then(response => response.json())
+        .then(data => {
+            const messageDiv = document.createElement('div');
+            messageDiv.style.cssText = data.status === 'success'
+                ? 'padding: 10px; margin-bottom: 10px; border-radius: 4px; font-size: 14px; text-align: center; font-family: Arial, sans-serif; background-color: #e0f7e0; color: #2e7d32; border: 1px solid #2e7d32;'
+                : 'padding: 10px; margin-bottom: 10px; border-radius: 4px; font-size: 14px; text-align: center; font-family: Arial, sans-serif; background-color: #ffebee; color: #d32f2f; border: 1px solid #d32f2f;';
+            messageDiv.textContent = data.message;
+            document.getElementById('forgot-password').prepend(messageDiv);
+            setTimeout(() => messageDiv.remove(), 3000);
+            if (data.status === 'success') {
+               setTimeout(() => window.location.href = '/login/', 2000)
+            }
+        });
+    };
+}
